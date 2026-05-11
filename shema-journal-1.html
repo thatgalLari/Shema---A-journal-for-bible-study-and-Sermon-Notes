@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shema — A Life Surrendered to His Word</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f5f0e8;
+  --cream-dark: #ece5d8;
+  --tan: #e8e0d0;
+  --tan-deep: #ddd4c0;
+  --dark: #1a2030;
+  --dark-mid: #2e3e52;
+  --gold: #c9a84c;
+  --gold-light: #e8d5a3;
+  --brown: #6b5a42;
+  --brown-light: #9a8870;
+  --border: #d4c9b5;
+  --text: #2c2416;
+  --section-bg: #ddd8cc;
+  --table-header: #3a5240;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--cream);
+  font-family: 'EB Garamond', serif;
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── TOOLBAR ── */
+.toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 32px; border-bottom: 1px solid var(--border);
+  background: var(--cream); position: sticky; top: 0; z-index: 50;
+}
+.toolbar-brand { font-family:'Cinzel',serif; font-size:12px; letter-spacing:4px; color:var(--dark); text-transform:uppercase; }
+.toolbar-btns { display:flex; gap:10px; }
+.tbtn {
+  font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  padding:7px 16px; border-radius:2px; cursor:pointer; border:none; transition:all .2s;
+}
+.tbtn.outline { background:transparent; border:1px solid var(--border); color:var(--brown); }
+.tbtn.outline:hover { border-color:var(--gold); color:var(--dark); }
+.tbtn.primary { background:var(--dark); color:var(--cream); }
+.tbtn.primary:hover { background:var(--dark-mid); }
+
+/* ── PAGE ── */
+.page {
+  max-width: 780px; margin: 0 auto; padding: 48px 32px;
+}
+
+/* ── HEADER ── */
+.journal-header { text-align:center; margin-bottom:32px; }
+
+.shema-title {
+  font-family:'Great Vibes', cursive;
+  font-size: clamp(44px, 8vw, 72px);
+  color: var(--dark);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.shema-phonetic {
+  font-family:'EB Garamond',serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-style: italic;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
+
+.header-rule { height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:14px 0; }
+
+.header-subtitle {
+  font-family:'Cinzel',serif;
+  font-size: clamp(13px, 2vw, 17px);
+  font-style: italic;
+  color: var(--dark);
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.header-desc {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 6px;
+}
+
+.header-journey {
+  font-family:'Cinzel',serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--brown-light);
+  margin-top: 8px;
+}
+
+.arrow { color: var(--gold); margin: 0 4px; }
+
+/* ── SECTION BLOCKS ── */
+.form-section { margin-bottom: 28px; }
+
+/* encounter context */
+.context-block {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 24px 28px;
+  background: var(--tan);
+  margin-bottom: 28px;
+}
+
+.context-title {
+  font-family:'Cinzel',serif;
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--dark); text-align:center; margin-bottom:20px;
+  display:flex; align-items:center; gap:12px;
+}
+.context-title::before,.context-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.context-row { display:flex; align-items:baseline; gap:10px; margin-bottom:14px; }
+.context-label { font-size:14px; font-style:italic; color:var(--text); white-space:nowrap; min-width:110px; }
+.context-input {
+  flex:1; font-family:'EB Garamond',serif; font-size:15px; color:var(--text);
+  background:transparent; border:none; border-bottom:1px solid var(--border);
+  outline:none; padding:2px 4px; transition:border-color .2s;
+}
+.context-input:focus { border-color:var(--gold); background:rgba(255,255,255,0.5); }
+.context-input::placeholder { color:#c0b5a0; font-style:italic; }
+
+/* section banners */
+.section-banner {
+  background: var(--section-bg);
+  border-radius: 3px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.banner-title {
+  font-family:'Cinzel',serif;
+  font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  color:var(--dark);
+}
+
+.banner-subtitle {
+  font-size:13px; font-style:italic; color:var(--brown);
+}
+
+.banner-note {
+  font-size:11px; font-style:italic; color:var(--brown-light);
+  margin-left:auto;
+}
+
+/* field rows */
+.field-row { margin-bottom:18px; }
+.field-row-label {
+  font-size:14px; font-style:italic; color:var(--text);
+  margin-bottom:4px; display:block;
+}
+.field-line {
+  font-family:'EB Garamond',serif; font-size:15px; color:var(--text);
+  width:100%; background:transparent; border:none; border-bottom:1px solid var(--border);
+  outline:none; padding:4px 4px 6px; transition:border-color .2s; display:block;
+}
+.field-line:focus { border-color:var(--gold); }
+.field-line::placeholder { color:#c0b5a0; font-style:italic; }
+
+.field-area {
+  font-family:'EB Garamond',serif; font-size:15px; color:var(--text);
+  width:100%; background:rgba(255,255,255,0.3); border:1px solid var(--border);
+  border-radius:3px; outline:none; padding:10px 12px; resize:vertical;
+  min-height:72px; line-height:1.7; transition:border-color .2s;
+}
+.field-area:focus { border-color:var(--gold); background:#fff; }
+.field-area::placeholder { color:#c0b5a0; font-style:italic; }
+
+.inline-row { display:flex; gap:16px; flex-wrap:wrap; }
+.inline-row .field-row { flex:1; min-width:180px; }
+
+/* commitment seal */
+.commitment-row {
+  display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+  font-size:14px; font-style:italic; color:var(--text); margin-top:4px;
+}
+.commitment-row .field-line { flex:1; min-width:140px; }
+.commitment-date { width:160px; flex-shrink:0; }
+
+/* divider rule */
+.section-rule { height:1px; background:var(--border); margin:24px 0; }
+
+/* heart response */
+.heart-title {
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:5px;
+  text-transform:uppercase; color:var(--dark); text-align:center;
+  display:flex; align-items:center; gap:12px; margin-bottom:20px;
+}
+.heart-title::before,.heart-title::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* spiritual check-in table */
+.checkin-block { margin-bottom:20px; }
+.checkin-title {
+  font-family:'Cinzel',serif; font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  background:var(--table-header); color:#e8e0d0; padding:10px 16px;
+  border-radius:3px 3px 0 0; display:flex; justify-content:space-between; align-items:center;
+}
+.checkin-sub { font-size:9px; letter-spacing:1px; opacity:0.7; }
+
+.checkin-cols { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-top:none; border-radius:0 0 3px 3px; overflow:hidden; }
+
+.checkin-col-header {
+  font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  background:var(--tan-deep); color:var(--dark); padding:8px 12px; text-align:center;
+  border-right:1px solid var(--border);
+}
+.checkin-col-header:last-child { border-right:none; }
+
+.checkin-row { display:contents; }
+.checkin-cell {
+  padding:10px 12px; border-right:1px solid var(--border); border-top:1px solid var(--border);
+  background:var(--tan);
+}
+.checkin-cell:last-child { border-right:none; }
+.checkin-cell-label { font-size:13px; font-style:italic; color:var(--brown); margin-bottom:6px; }
+.checkin-cell-input {
+  font-family:'EB Garamond',serif; font-size:14px; color:var(--text);
+  width:100%; background:transparent; border:none; border-bottom:1px solid var(--border);
+  outline:none; padding:2px 2px 4px; transition:border-color .2s;
+}
+.checkin-cell-input:focus { border-color:var(--gold); }
+.checkin-cell-input::placeholder { color:#c0b5a0; font-size:12px; font-style:italic; }
+
+/* growth marker */
+.growth-row {
+  display:flex; align-items:baseline; gap:10px; margin-top:20px;
+  font-size:14px; color:var(--text);
+}
+.growth-label { font-style:italic; font-weight:500; white-space:nowrap; }
+.growth-label strong { font-style:normal; }
+
+/* save notice */
+.save-notice {
+  text-align:center; font-family:'Cinzel',serif; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase; color:var(--gold);
+  padding:8px; opacity:0; transition:opacity .4s;
+}
+.save-notice.show { opacity:1; }
+
+@media print {
+  .toolbar { display:none; }
+  body { background:white; padding-bottom:0; }
+  .page { padding:24px; }
+  .field-area { border:1px solid #ccc; }
+}
+
+@media (max-width:600px) {
+  .toolbar { padding:12px 16px; }
+  .page { padding:24px 16px; }
+  .context-label { min-width:80px; }
+  .inline-row { flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="toolbar-brand">Shema Journal</span>
+  <div class="toolbar-btns">
+    <button class="tbtn outline" onclick="clearAll()">Clear</button>
+    <button class="tbtn primary" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="journal-header">
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;">
+      <span style="font-size:28px; color:var(--gold);">🕊</span>
+      <div>
+        <div class="shema-title">Shema</div>
+      </div>
+      <span style="font-family:'EB Garamond',serif; font-size:26px; font-style:italic; color:var(--brown);">"shay-mah"</span>
+    </div>
+    <div class="header-rule"></div>
+    <div class="header-subtitle">A Life Surrendered to His Word</div>
+    <div class="header-rule"></div>
+    <p class="header-desc">"Shema" is Hebrew for "hear" or "listen." It means to hear God's Word and respond with an obedient heart.</p>
+    <p class="header-journey" style="margin-top:12px;">
+      This journal guides you from
+      <span style="color:var(--dark);font-weight:600;">Knowledge</span>
+      <span class="arrow">→</span>
+      <span style="color:var(--dark);font-weight:600;">Revelation</span>
+      <span class="arrow">→</span>
+      <span style="color:var(--dark);font-weight:600;">Understanding</span>
+      <span class="arrow">→</span>
+      <span style="color:var(--dark);font-weight:600;">Wisdom</span>
+    </p>
+  </div>
+
+  <!-- ENCOUNTER CONTEXT -->
+  <div class="context-block">
+    <div class="context-title">Encounter Context</div>
+
+    <div class="context-row">
+      <span class="context-label">Church:</span>
+      <input class="context-input" type="text" placeholder="Church name…" id="ctx-church" />
+    </div>
+    <div class="context-row">
+      <span class="context-label">Date:</span>
+      <input class="context-input" type="text" placeholder="e.g. 5 March 2026…" id="ctx-date" />
+    </div>
+    <div class="context-row">
+      <span class="context-label">Preacher:</span>
+      <input class="context-input" type="text" placeholder="Preacher's name…" id="ctx-preacher" />
+    </div>
+    <div class="context-row">
+      <span class="context-label">Topic / Theme:</span>
+      <input class="context-input" type="text" placeholder="Message topic or theme…" id="ctx-topic" />
+    </div>
+    <div class="context-row">
+      <span class="context-label">Scripture(s):</span>
+      <input class="context-input" type="text" placeholder="Key scripture references…" id="ctx-scripture" />
+    </div>
+  </div>
+
+  <!-- KNOWLEDGE -->
+  <div class="form-section">
+    <div class="section-banner">
+      <span class="banner-title">Knowledge — What I Learned</span>
+      <span class="banner-subtitle">What I Learned</span>
+      <span class="banner-note">Spirit: Truth received by the mind</span>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">Key insights and points:</label>
+      <textarea class="field-area" id="k-insights" placeholder="Write the key insights and points from this message…"></textarea>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">How this scripture illuminates God's truth:</label>
+      <textarea class="field-area" id="k-truth" placeholder="How does this scripture shed light on who God is or what He has said…"></textarea>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <!-- REVELATION -->
+  <div class="form-section">
+    <div class="section-banner">
+      <span class="banner-title">Revelation — What God Showed Me</span>
+      <span class="banner-note">Soul: Truth awakened in the spirit</span>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">What the Holy Spirit impressed on my heart:</label>
+      <textarea class="field-area" id="r-spirit" placeholder="What did the Holy Spirit speak to you personally during this message…"></textarea>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">Personal spiritual insight or encounter:</label>
+      <textarea class="field-area" id="r-insight" placeholder="Describe any personal spiritual insight, moment of conviction, or encounter with God…"></textarea>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <!-- UNDERSTANDING -->
+  <div class="form-section">
+    <div class="section-banner">
+      <span class="banner-title">Understanding — What This Means for Me</span>
+      <span class="banner-note">Soul/Heart: Truth settling into the soul</span>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">Thoughts, emotions, or questions surfaced:</label>
+      <textarea class="field-area" id="u-thoughts" placeholder="What thoughts, emotions, or questions came up as you heard this word…"></textarea>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">How this teaching is correcting or renewing me:</label>
+      <textarea class="field-area" id="u-renewing" placeholder="How is this message correcting, renewing, or reshaping something in you…"></textarea>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <!-- WISDOM -->
+  <div class="form-section">
+    <div class="section-banner">
+      <span class="banner-title">Wisdom — How I Will Live This Out</span>
+      <span class="banner-note">Life: Truth expressed through my actions</span>
+    </div>
+
+    <div class="inline-row">
+      <div class="field-row">
+        <label class="field-row-label">Actions this week:</label>
+        <textarea class="field-area" id="w-week" placeholder="What will you do this week in response to this word…" style="min-height:80px;"></textarea>
+      </div>
+      <div class="field-row">
+        <label class="field-row-label">Actions this month:</label>
+        <textarea class="field-area" id="w-month" placeholder="What longer-term step will you take this month…" style="min-height:80px;"></textarea>
+      </div>
+    </div>
+
+    <div class="commitment-row">
+      <span style="white-space:nowrap; font-style:italic;">Commitment Seal: I commit to walk out this Word:</span>
+      <input class="field-line" id="w-commitment" type="text" placeholder="Write your commitment…" style="flex:2;" />
+      <span style="white-space:nowrap; font-style:italic;">Date:</span>
+      <input class="field-line commitment-date" id="w-date" type="text" placeholder="__ / __ / ____" />
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <!-- HEART RESPONSE -->
+  <div class="form-section">
+    <div class="heart-title">Heart Response</div>
+
+    <div class="field-row">
+      <label class="field-row-label">Prayer / Declaration:</label>
+      <textarea class="field-area" id="h-prayer" placeholder="Write your prayer or declaration in response to this message…"></textarea>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">Areas God is working on in me:</label>
+      <textarea class="field-area" id="h-working" placeholder="What areas of your life is God specifically working on through this word…"></textarea>
+    </div>
+
+    <div class="field-row">
+      <label class="field-row-label">Gratitude &amp; Reflection:</label>
+      <textarea class="field-area" id="h-gratitude" placeholder="What are you grateful for? What will you carry with you from this encounter…"></textarea>
+    </div>
+  </div>
+
+  <!-- SPIRITUAL CHECK-IN -->
+  <div class="checkin-block">
+    <div class="checkin-title">
+      <span>Spiritual Check-In (Shema Alignment)</span>
+      <span class="checkin-sub">Spirit · Soul · Body</span>
+    </div>
+    <div class="checkin-cols">
+      <div class="checkin-col-header">Spirit</div>
+      <div class="checkin-col-header">Soul</div>
+      <div class="checkin-col-header">Body</div>
+
+      <!-- Row 1 -->
+      <div class="checkin-cell">
+        <div class="checkin-cell-label">My relationship with God</div>
+        <input class="checkin-cell-input" id="sc-spirit-1" type="text" placeholder="How is your walk with God…" />
+        <input class="checkin-cell-input" style="margin-top:8px;" id="sc-spirit-1b" type="text" placeholder="…" />
+      </div>
+      <div class="checkin-cell">
+        <div class="checkin-cell-label">My emotions &amp; thoughts</div>
+        <input class="checkin-cell-input" id="sc-soul-1" type="text" placeholder="What emotions are present…" />
+        <input class="checkin-cell-input" style="margin-top:8px;" id="sc-soul-1b" type="text" placeholder="…" />
+      </div>
+      <div class="checkin-cell">
+        <div class="checkin-cell-label">&nbsp;</div>
+        <input class="checkin-cell-input" id="sc-body-1" type="text" placeholder="Physical state / health…" />
+        <input class="checkin-cell-input" style="margin-top:8px;" id="sc-body-1b" type="text" placeholder="…" />
+      </div>
+
+      <!-- Row 2 -->
+      <div class="checkin-cell">
+        <div class="checkin-cell-label">My habits &amp; actions</div>
+        <input class="checkin-cell-input" id="sc-spirit-2" type="text" placeholder="Spiritual disciplines…" />
+        <input class="checkin-cell-input" style="margin-top:8px;" id="sc-spirit-2b" type="text" placeholder="…" />
+      </div>
+      <div class="checkin-cell">
+        <div class="checkin-cell-label">&nbsp;</div>
+        <input class="checkin-cell-input" id="sc-soul-2" type="text" placeholder="Thought patterns…" />
+        <input class="checkin-cell-input" style="margin-top:8px;" id="sc-soul-2b" type="text" placeholder="…" />
+      </div>
+      <div class="checkin-cell">
+        <div class="checkin-cell-label">&nbsp;</div>
+        <input class="checkin-cell-input" id="sc-body-2" type="text" placeholder="Lifestyle habits…" />
+        <input class="checkin-cell-input" style="margin-top:8px;" id="sc-body-2b" type="text" placeholder="…" />
+      </div>
+    </div>
+  </div>
+
+  <!-- GROWTH MARKER -->
+  <div class="growth-row">
+    <span class="growth-label"><strong>Growth Marker:</strong> What is God building in me through this message?</span>
+    <input class="field-line" id="growth" type="text" placeholder="Write what God is building in you…" style="flex:1; margin-left:8px;" />
+  </div>
+
+  <!-- SAVE NOTICE -->
+  <div class="save-notice" id="save-notice">✦ Saved</div>
+
+</div><!-- end .page -->
+
+<script>
+const FIELDS = [
+  'ctx-church','ctx-date','ctx-preacher','ctx-topic','ctx-scripture',
+  'k-insights','k-truth',
+  'r-spirit','r-insight',
+  'u-thoughts','u-renewing',
+  'w-week','w-month','w-commitment','w-date',
+  'h-prayer','h-working','h-gratitude',
+  'sc-spirit-1','sc-spirit-1b','sc-soul-1','sc-soul-1b','sc-body-1','sc-body-1b',
+  'sc-spirit-2','sc-spirit-2b','sc-soul-2','sc-soul-2b','sc-body-2','sc-body-2b',
+  'growth'
+];
+
+// Load saved data
+FIELDS.forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const saved = localStorage.getItem('shema_' + id);
+  if (saved) el.value = saved;
+  el.addEventListener('input', () => {
+    localStorage.setItem('shema_' + id, el.value);
+    autoResize(el);
+    showSaved();
+  });
+  autoResize(el);
+});
+
+function autoResize(el) {
+  if (el.tagName !== 'TEXTAREA') return;
+  el.style.height = 'auto';
+  el.style.height = (el.scrollHeight) + 'px';
+}
+
+let saveTimer;
+function showSaved() {
+  clearTimeout(saveTimer);
+  const n = document.getElementById('save-notice');
+  n.classList.add('show');
+  saveTimer = setTimeout(() => n.classList.remove('show'), 2000);
+}
+
+function clearAll() {
+  if (!confirm('Clear all fields and start a new entry?')) return;
+  FIELDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; autoResize(el); }
+    localStorage.removeItem('shema_' + id);
+  });
+}
+</script>
+</body>
+</html>
