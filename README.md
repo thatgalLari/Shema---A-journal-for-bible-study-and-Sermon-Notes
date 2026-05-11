@@ -1,0 +1,1 @@
+# Shema---A-journal-for-bible-study-and-Sermon-Notes
